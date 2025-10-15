@@ -1,0 +1,75 @@
+<div class="container mt-5">
+    <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+            <h4 class="text-center mb-4">Cadastro de Pet</h4>
+
+            <form [formGroup]="petForm" (ngSubmit)="onSubmit()">
+
+                <!-- Tutor -->
+                <div class="mb-3">
+                    <label for="tutor" class="form-label">Tutor</label>
+                    <select id="tutor" class="form-select" formControlName="tutor">
+                        @for (t of tutores; track t.id) {
+                        <option [value]="t.id">{{ t.nome }}</option>
+                        }
+                    </select>
+
+                    @if (petForm.get('tutor')?.touched && petForm.get('tutor')?.invalid) {
+                    <div class="text-danger mt-1">Selecione um tutor</div>
+                    }
+                </div>
+
+                <!-- Nome -->
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input id="nome" type="text" class="form-control" formControlName="nome" />
+                    @if (petForm.get('nome')?.touched && petForm.get('nome')?.invalid) {
+                    <div class="text-danger mt-1">Informe o nome do pet (mínimo 2 letras)</div>
+                    }
+                </div>
+
+                <!-- Espécie -->
+                <div class="mb-3">
+                    <label for="especie" class="form-label">Espécie</label>
+                    <select id="especie" class="form-select" formControlName="especie">
+                        @for (e of especies; track e) {
+                        <option [value]="e">{{ e }}</option>
+                        }
+                    </select>
+
+                    @if (petForm.get('especie')?.touched && petForm.get('especie')?.invalid) {
+                    <div class="text-danger mt-1">Selecione uma espécie</div>
+                    }
+                </div>
+
+                <!-- Raça -->
+                <div class="mb-3">
+                    <label for="raca" class="form-label">Raça</label>
+                    <input id="raca" type="text" class="form-control" formControlName="raca" />
+                    @if (petForm.get('raca')?.touched && petForm.get('raca')?.invalid) {
+                    <div class="text-danger mt-1">Informe a raça</div>
+                    }
+                </div>
+
+                <!-- Idade -->
+                <div class="mb-3">
+                    <label for="idade" class="form-label">Idade (em anos)</label>
+                    <input id="idade" type="number" class="form-control" formControlName="idade" min="0" />
+                    @if (petForm.get('idade')?.touched && petForm.get('idade')?.invalid) {
+                    <div class="text-danger mt-1">Informe uma idade válida</div>
+                    }
+                </div>
+
+                <!-- Restrições -->
+                <div class="mb-3">
+                    <label for="restricoes" class="form-label">Restrições (opcional)</label>
+                    <textarea id="restricoes" rows="3" class="form-control" formControlName="restricoes"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 mt-3" [disabled]="petForm.invalid">
+                    Cadastrar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
