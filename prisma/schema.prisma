@@ -1,0 +1,151 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tutor {
+  id_tutor     String        @id @db.VarChar(50)
+  nome         String?       @db.VarChar(100)
+  email        String?       @db.VarChar(100)
+  telefone     String?       @db.VarChar(20)
+  endereco     String?       @db.VarChar(200)
+  senha        String?       @db.VarChar(100)
+  pets         Pet[]
+  reservas     Reserva[]
+  notificacoes Notificacao[]
+
+  @@map("tutor")
+}
+
+model Prestador {
+  id_prestador  String        @id @db.VarChar(50)
+  nome          String?       @db.VarChar(100)
+  email         String?       @db.VarChar(100)
+  telefone      String?       @db.VarChar(20)
+  endereco      String?       @db.VarChar(200)
+  senha         String?       @db.VarChar(100)
+  servicos      String?       @db.VarChar(200)
+  servicos_list Servico[]
+  agendamentos  Agendamento[]
+  notificacoes  Notificacao[]
+
+  @@map("prestador")
+}
+
+model Pet {
+  id_pet     String    @id @db.VarChar(50)
+  id_tutor   String?   @db.VarChar(50)
+  nome       String?   @db.VarChar(100)
+  especie    String?   @db.VarChar(50)
+  raca       String?   @db.VarChar(50)
+  idade      Int?
+  restricoes String?   @db.VarChar(200)
+  tutor      Tutor?    @relation(fields: [id_tutor], references: [id_tutor])
+  reservas   Reserva[]
+
+  @@map("pet")
+}
+
+model Servico {
+  id_servico   String     @id @db.VarChar(50)
+  id_prestador String?    @db.VarChar(50)
+  descricao    String?    @db.VarChar(200)
+  titulo       String?    @db.VarChar(100)
+  preco        Float?     @db.DoublePrecision
+  tipo         String?    @db.VarChar(50)
+  prestador    Prestador? @relation(fields: [id_prestador], references: [id_prestador])
+  reservas     Reserva[]
+
+  @@map("servico")
+}
+
+model Agendamento {
+  id_agendamento String     @id @db.VarChar(50)
+  id_prestador   String?    @db.VarChar(50)
+  data_inicio    DateTime?  @db.Date
+  data_fim       DateTime?  @db.Date
+  disponivel     Boolean?
+  prestador      Prestador? @relation(fields: [id_prestador], references: [id_prestador])
+  reservas       Reserva[]
+
+  @@map("agendamentos")
+}
+
+model Reserva {
+  id_reserva     String       @id @db.VarChar(50)
+  id_tutor       String?      @db.VarChar(50)
+  id_pet         String?      @db.VarChar(50)
+  id_servico     String?      @db.VarChar(50)
+  id_agendamento String?      @db.VarChar(50)
+  status         String?      @db.VarChar(50)
+  data_reserva   DateTime?    @db.Date
+  valor          Float?
+  tutor          Tutor?       @relation(fields: [id_tutor], references: [id_tutor])
+  pet            Pet?         @relation(fields: [id_pet], references: [id_pet])
+  servico        Servico?     @relation(fields: [id_servico], references: [id_servico])
+  agendamento    Agendamento? @relation(fields: [id_agendamento], references: [id_agendamento])
+  avaliacoes     Avaliacao[]
+  pagamentos     Pagamento[]
+  midias         Midia[]
+
+  @@map("reserva")
+}
+
+model Avaliacao {
+  id_avaliacao   String    @id @db.VarChar(50)
+  id_reserva     String?   @db.VarChar(50)
+  nota           Int?
+  comentario     String?   @db.VarChar(200)
+  data_avaliacao DateTime? @db.Date
+  reserva        Reserva?  @relation(fields: [id_reserva], references: [id_reserva])
+
+  @@map("avaliacao")
+}
+
+model Pagamento {
+  id_pagamento    String    @id @db.VarChar(50)
+  id_reserva      String?   @db.VarChar(50)
+  valor           Float?    @db.DoublePrecision
+  forma_pagamento String?   @db.VarChar(50)
+  gorjeta         Float?    @db.DoublePrecision
+  status          String?   @db.VarChar(50)
+  data_pagamento  DateTime? @db.Date
+  reserva         Reserva?  @relation(fields: [id_reserva], references: [id_reserva])
+
+  @@map("pagamento")
+}
+
+model Midia {
+  id_midia        String    @id @db.VarChar(50)
+  id_reserva      String?   @db.VarChar(50)
+  tipo            String?   @db.VarChar(20)
+  caminho_arquivo String?   @db.VarChar(200)
+  data_envio      DateTime? @db.Date
+  reserva         Reserva?  @relation(fields: [id_reserva], references: [id_reserva])
+
+  @@map("midia")
+}
+
+model Notificacao {
+  id_notificacao String     @id @db.VarChar(50)
+  id_tutor       String?    @db.VarChar(50)
+  id_prestador   String?    @db.VarChar(50)
+  mensagem       String?    @db.VarChar(200)
+  data_envio     DateTime?  @db.Date
+  lida           Boolean?
+  tutor          Tutor?     @relation(fields: [id_tutor], references: [id_tutor])
+  prestador      Prestador? @relation(fields: [id_prestador], references: [id_prestador])
+
+  @@map("notificacao")
+}
