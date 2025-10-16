@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ModalPet } from './modal-pet/modal-pet';
-import { MatIconModule } from '@angular/material/icon';
+import { BotaoVoltar } from '../../shared/botao-voltar/botao-voltar';
 import { MatButtonModule } from '@angular/material/button';
-import { BotaoVoltar } from "../../shared/botao-voltar/botao-voltar";
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalServico } from './modal-servico/modal-servico';
 
 @Component({
-  selector: 'app-pet',
+  selector: 'app-servico',
   imports: [MatIconModule, MatButtonModule, BotaoVoltar],
-  templateUrl: './pet.html',
-  styleUrl: './pet.scss',
+  templateUrl: './servico.html',
+  styleUrl: './servico.scss',
 })
-export class Pet {
+export class Servico {
   constructor(private dialog: MatDialog) {}
   abrirModal(event: any) {
-    const dialogRef = this.dialog.open(ModalPet, {
+    const dialogRef = this.dialog.open(ModalServico, {
       width: '1000px',
       data: { pet: event },
     });

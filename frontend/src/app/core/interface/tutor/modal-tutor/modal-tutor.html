@@ -1,0 +1,57 @@
+<div class="container p-4">
+    <div class="card-body">
+        <h4 class="text-center mb-4">Cadastro de Tutor</h4>
+
+        <form [formGroup]="tutorForm" (ngSubmit)="onSubmit()">
+
+            <!-- Nome -->
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" id="nome" class="form-control" formControlName="nome" />
+                @if (tutorForm.get('nome')?.touched && tutorForm.get('nome')?.invalid) {
+                <div class="text-danger mt-1">
+                    O nome é obrigatório (mínimo 3 caracteres)
+                </div>
+                }
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" class="form-control" formControlName="email" />
+                @if (tutorForm.get('email')?.touched && tutorForm.get('email')?.invalid) {
+                <div class="text-danger mt-1">
+                    Insira um e-mail válido
+                </div>
+                }
+            </div>
+
+            <!-- Telefone -->
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="tel" id="telefone" class="form-control" formControlName="telefone"
+                    placeholder="Somente números" />
+                @if (tutorForm.get('telefone')?.touched && tutorForm.get('telefone')?.invalid) {
+                <div class="text-danger mt-1">
+                    O telefone deve conter 10 ou 11 dígitos
+                </div>
+                }
+            </div>
+
+            <!-- Senha -->
+            <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" id="senha" class="form-control" formControlName="senha" />
+                @if (tutorForm.get('senha')?.touched && tutorForm.get('senha')?.invalid) {
+                <div class="text-danger mt-1">
+                    A senha deve ter no mínimo 6 caracteres
+                </div>
+                }
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 mt-3" [disabled]="tutorForm.invalid">
+                Cadastrar
+            </button>
+        </form>
+    </div>
+</div>

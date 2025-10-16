@@ -1,0 +1,68 @@
+<div class="container p-4">
+    <div class="card-body">
+        <h4 class="text-center mb-4">Cadastro de Prestador</h4>
+
+        <form [formGroup]="prestadorForm" (ngSubmit)="onSubmit()">
+
+            <!-- Nome -->
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input id="nome" type="text" class="form-control" formControlName="nome" />
+                @if (prestadorForm.get('nome')?.touched && prestadorForm.get('nome')?.invalid) {
+                <div class="text-danger mt-1">
+                    O nome é obrigatório (mínimo 3 caracteres)
+                </div>
+                }
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" type="email" class="form-control" formControlName="email" />
+                @if (prestadorForm.get('email')?.touched && prestadorForm.get('email')?.invalid) {
+                <div class="text-danger mt-1">
+                    Insira um e-mail válido
+                </div>
+                }
+            </div>
+
+            <!-- Telefone -->
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input id="telefone" type="tel" class="form-control" formControlName="telefone"
+                    placeholder="Somente números" />
+                @if (prestadorForm.get('telefone')?.touched && prestadorForm.get('telefone')?.invalid) {
+                <div class="text-danger mt-1">
+                    O telefone deve conter 10 ou 11 dígitos
+                </div>
+                }
+            </div>
+
+            <!-- Endereço -->
+            <div class="mb-3">
+                <label for="endereco" class="form-label">Endereço</label>
+                <input id="endereco" type="text" class="form-control" formControlName="endereco" />
+                @if (prestadorForm.get('endereco')?.touched && prestadorForm.get('endereco')?.invalid) {
+                <div class="text-danger mt-1">
+                    O endereço é obrigatório
+                </div>
+                }
+            </div>
+
+            <!-- Senha -->
+            <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input id="senha" type="password" class="form-control" formControlName="senha" />
+                @if (prestadorForm.get('senha')?.touched && prestadorForm.get('senha')?.invalid) {
+                <div class="text-danger mt-1">
+                    A senha deve ter no mínimo 6 caracteres
+                </div>
+                }
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 mt-3" [disabled]="prestadorForm.invalid">
+                Cadastrar
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container p-4">
+    <div class="card-body">
+        <h4 class="text-center mb-4">Cadastro de Serviço</h4>
+
+        <form [formGroup]="servicoForm" (ngSubmit)="onSubmit()">
+
+            <!-- Título -->
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input id="titulo" type="text" class="form-control" formControlName="titulo" />
+                @if (servicoForm.get('titulo')?.touched && servicoForm.get('titulo')?.invalid) {
+                <div class="text-danger mt-1">
+                    O título é obrigatório
+                </div>
+                }
+            </div>
+
+            <!-- Descrição -->
+            <div class="mb-3">
+                <label for="descricao" class="form-label">Descrição</label>
+                <textarea id="descricao" rows="3" class="form-control" formControlName="descricao"></textarea>
+                @if (servicoForm.get('descricao')?.touched && servicoForm.get('descricao')?.invalid) {
+                <div class="text-danger mt-1">
+                    A descrição é obrigatória
+                </div>
+                }
+            </div>
+
+            <!-- Preço -->
+            <div class="mb-3">
+                <label for="preco" class="form-label">Preço (R$)</label>
+                <input id="preco" type="number" class="form-control" formControlName="preco" min="0" step="0.01" />
+                @if (servicoForm.get('preco')?.touched && servicoForm.get('preco')?.invalid) {
+                <div class="text-danger mt-1">
+                    Informe um preço válido
+                </div>
+                }
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 mt-3" [disabled]="servicoForm.invalid">
+                Cadastrar
+            </button>
+        </form>
+    </div>
+</div>
