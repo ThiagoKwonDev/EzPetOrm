@@ -159,7 +159,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/brenosouza/Desktop/EzPetOrm/backend/generated/prisma",
+      "value": "C:\\dev\\EzPetOrm\\backend\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -168,12 +168,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin-arm64",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/brenosouza/Desktop/EzPetOrm/backend/prisma/schema.prisma",
+    "sourceFilePath": "C:\\dev\\EzPetOrm\\backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -187,7 +187,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
