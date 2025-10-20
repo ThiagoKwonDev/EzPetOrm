@@ -4204,25 +4204,25 @@ export namespace Prisma {
   }
 
   export type ServicoAvgAggregateOutputType = {
-    preco: number | null
+    preco: Decimal | null
   }
 
   export type ServicoSumAggregateOutputType = {
-    preco: number | null
+    preco: Decimal | null
   }
 
   export type ServicoMinAggregateOutputType = {
     id: string | null
     descricao: string | null
     titulo: string | null
-    preco: number | null
+    preco: Decimal | null
   }
 
   export type ServicoMaxAggregateOutputType = {
     id: string | null
     descricao: string | null
     titulo: string | null
-    preco: number | null
+    preco: Decimal | null
   }
 
   export type ServicoCountAggregateOutputType = {
@@ -4354,7 +4354,7 @@ export namespace Prisma {
     id: string
     descricao: string | null
     titulo: string | null
-    preco: number | null
+    preco: Decimal | null
     _count: ServicoCountAggregateOutputType | null
     _avg: ServicoAvgAggregateOutputType | null
     _sum: ServicoSumAggregateOutputType | null
@@ -4413,7 +4413,7 @@ export namespace Prisma {
       id: string
       descricao: string | null
       titulo: string | null
-      preco: number | null
+      preco: Prisma.Decimal | null
     }, ExtArgs["result"]["servico"]>
     composites: {}
   }
@@ -4840,7 +4840,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Servico", 'String'>
     readonly descricao: FieldRef<"Servico", 'String'>
     readonly titulo: FieldRef<"Servico", 'String'>
-    readonly preco: FieldRef<"Servico", 'Float'>
+    readonly preco: FieldRef<"Servico", 'Decimal'>
   }
     
 
@@ -5325,6 +5325,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -5521,7 +5535,7 @@ export namespace Prisma {
     id?: StringFilter<"Servico"> | string
     descricao?: StringNullableFilter<"Servico"> | string | null
     titulo?: StringNullableFilter<"Servico"> | string | null
-    preco?: FloatNullableFilter<"Servico"> | number | null
+    preco?: DecimalNullableFilter<"Servico"> | Decimal | DecimalJsLike | number | string | null
   }
 
   export type ServicoOrderByWithRelationInput = {
@@ -5538,7 +5552,7 @@ export namespace Prisma {
     NOT?: ServicoWhereInput | ServicoWhereInput[]
     descricao?: StringNullableFilter<"Servico"> | string | null
     titulo?: StringNullableFilter<"Servico"> | string | null
-    preco?: FloatNullableFilter<"Servico"> | number | null
+    preco?: DecimalNullableFilter<"Servico"> | Decimal | DecimalJsLike | number | string | null
   }, "id">
 
   export type ServicoOrderByWithAggregationInput = {
@@ -5560,7 +5574,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Servico"> | string
     descricao?: StringNullableWithAggregatesFilter<"Servico"> | string | null
     titulo?: StringNullableWithAggregatesFilter<"Servico"> | string | null
-    preco?: FloatNullableWithAggregatesFilter<"Servico"> | number | null
+    preco?: DecimalNullableWithAggregatesFilter<"Servico"> | Decimal | DecimalJsLike | number | string | null
   }
 
   export type TutorCreateInput = {
@@ -5756,49 +5770,49 @@ export namespace Prisma {
     id?: string
     descricao?: string | null
     titulo?: string | null
-    preco?: number | null
+    preco?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type ServicoUncheckedCreateInput = {
     id?: string
     descricao?: string | null
     titulo?: string | null
-    preco?: number | null
+    preco?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type ServicoUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     titulo?: NullableStringFieldUpdateOperationsInput | string | null
-    preco?: NullableFloatFieldUpdateOperationsInput | number | null
+    preco?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type ServicoUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     titulo?: NullableStringFieldUpdateOperationsInput | string | null
-    preco?: NullableFloatFieldUpdateOperationsInput | number | null
+    preco?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type ServicoCreateManyInput = {
     id?: string
     descricao?: string | null
     titulo?: string | null
-    preco?: number | null
+    preco?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type ServicoUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     titulo?: NullableStringFieldUpdateOperationsInput | string | null
-    preco?: NullableFloatFieldUpdateOperationsInput | number | null
+    preco?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type ServicoUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     titulo?: NullableStringFieldUpdateOperationsInput | string | null
-    preco?: NullableFloatFieldUpdateOperationsInput | number | null
+    preco?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -5988,15 +6002,15 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
   export type ServicoCountOrderByAggregateInput = {
@@ -6028,20 +6042,20 @@ export namespace Prisma {
     preco?: SortOrder
   }
 
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -6060,12 +6074,12 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableFloatFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6179,20 +6193,31 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
 

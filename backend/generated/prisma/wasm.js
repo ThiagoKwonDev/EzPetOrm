@@ -159,7 +159,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\dev\\EzPetOrm\\backend\\generated\\prisma",
+      "value": "/Users/brenosouza/Desktop/EzPetOrm/backend/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -168,17 +168,16 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin-arm64",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\dev\\EzPetOrm\\backend\\prisma\\schema.prisma",
+    "sourceFilePath": "/Users/brenosouza/Desktop/EzPetOrm/backend/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../prisma",
   "clientVersion": "6.17.1",
@@ -187,6 +186,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -195,13 +195,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Tutor {\n  id       String  @id @default(uuid())\n  nome     String? @db.VarChar(100)\n  email    String? @db.VarChar(100)\n  telefone String? @db.VarChar(20)\n  senha    String? @db.VarChar(100)\n\n  @@map(\"tutor\")\n}\n\nmodel Prestador {\n  id       String  @id @default(uuid())\n  nome     String? @db.VarChar(100)\n  email    String? @db.VarChar(100)\n  telefone String? @db.VarChar(20)\n  endereco String? @db.VarChar(200)\n  senha    String? @db.VarChar(100)\n\n  @@map(\"prestador\")\n}\n\nmodel Pet {\n  id         String  @id @default(uuid())\n  tutor      String? @db.VarChar(50)\n  nome       String? @db.VarChar(100)\n  especie    String? @db.VarChar(50)\n  raca       String? @db.VarChar(50)\n  idade      Int?\n  restricoes String? @db.VarChar(200)\n\n  @@map(\"pet\")\n}\n\nmodel Servico {\n  id        String  @id @default(uuid())\n  descricao String? @db.VarChar(200)\n  titulo    String? @db.VarChar(100)\n  preco     Float?  @db.DoublePrecision\n\n  @@map(\"servico\")\n}\n",
-  "inlineSchemaHash": "2737a0bc583849ee397b5dcbdc56bddce7e31b504c49ed788326c4331135cdea",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Tutor {\n  id       String  @id @default(uuid())\n  nome     String? @db.VarChar(100)\n  email    String? @db.VarChar(100)\n  telefone String? @db.VarChar(20)\n  senha    String? @db.VarChar(100)\n\n  @@map(\"tutor\")\n}\n\nmodel Prestador {\n  id       String  @id @default(uuid())\n  nome     String? @db.VarChar(100)\n  email    String? @db.VarChar(100)\n  telefone String? @db.VarChar(20)\n  endereco String? @db.VarChar(200)\n  senha    String? @db.VarChar(100)\n\n  @@map(\"prestador\")\n}\n\nmodel Pet {\n  id         String  @id @default(uuid())\n  tutor      String? @db.VarChar(50)\n  nome       String? @db.VarChar(100)\n  especie    String? @db.VarChar(50)\n  raca       String? @db.VarChar(50)\n  idade      Int?\n  restricoes String? @db.VarChar(200)\n\n  @@map(\"pet\")\n}\n\nmodel Servico {\n  id        String   @id @default(uuid())\n  descricao String?  @db.VarChar(200)\n  titulo    String?  @db.VarChar(100)\n  preco     Decimal? @db.Decimal(5, 2)\n\n  @@map(\"servico\")\n}\n",
+  "inlineSchemaHash": "895aba7fc7d3c785299108c4d628df57a089bbd12cb1ded4710bbccd0280ee0d",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Tutor\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"telefone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"senha\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"tutor\"},\"Prestador\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"telefone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"endereco\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"senha\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"prestador\"},\"Pet\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tutor\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"especie\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"raca\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"idade\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"restricoes\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"pet\"},\"Servico\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"descricao\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"titulo\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"preco\",\"kind\":\"scalar\",\"type\":\"Float\"}],\"dbName\":\"servico\"}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Tutor\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"telefone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"senha\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"tutor\"},\"Prestador\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"telefone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"endereco\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"senha\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"prestador\"},\"Pet\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tutor\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"especie\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"raca\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"idade\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"restricoes\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"pet\"},\"Servico\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"descricao\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"titulo\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"preco\",\"kind\":\"scalar\",\"type\":\"Decimal\"}],\"dbName\":\"servico\"}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

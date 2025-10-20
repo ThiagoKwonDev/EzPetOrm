@@ -48,10 +48,10 @@ model Pet {
 }
 
 model Servico {
-  id        String  @id @default(uuid())
-  descricao String? @db.VarChar(200)
-  titulo    String? @db.VarChar(100)
-  preco     Float?  @db.DoublePrecision
+  id        String   @id @default(uuid())
+  descricao String?  @db.VarChar(200)
+  titulo    String?  @db.VarChar(100)
+  preco     Decimal? @db.Decimal(5, 2)
 
   @@map("servico")
 }
