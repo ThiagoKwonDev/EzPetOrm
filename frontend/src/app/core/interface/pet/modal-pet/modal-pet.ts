@@ -6,6 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { PetService } from '../../../service/pet-service';
+import { PetDto } from '../../../dto/pet.dto';
 
 @Component({
   selector: 'app-modal-pet',
@@ -16,20 +18,16 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class ModalPet implements OnInit {
   private data: any = inject(MAT_DIALOG_DATA);
   petForm: FormGroup;
-
-  tutores = [
-    { id: 1, nome: 'João Silva' },
-    { id: 2, nome: 'Maria Oliveira' },
-    { id: 3, nome: 'Carlos Souza' },
-  ];
-
+  titulo: string = 'Cadastrar';
   especies = ['Cachorro', 'Gato', 'Pássaro', 'Outro'];
 
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<ModalPet>
+    private dialogRef: MatDialogRef<ModalPet>,
+    private petService: PetService
   ) {
     this.petForm = this.fb.group({
+      id: [null],
       tutor: [null, Validators.required],
       nome: ['', [Validators.required, Validators.minLength(2)]],
       especie: ['', Validators.required],
@@ -40,14 +38,29 @@ export class ModalPet implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
+    if (this.data.pet) {
+      this.titulo = 'Editar';
+      this.petForm.patchValue(this.data.pet);
+    }
   }
 
   onSubmit() {
     if (this.petForm.valid) {
-      console.log('Pet cadastrado:', this.petForm.value);
-      alert('Pet cadastrado com sucesso!');
-      this.petForm.reset();
+      const pet = { ...this.petForm.getRawValue() } as PetDto;
+      if (pet.id === null) {
+        const createPet = {
+          tutor: pet.tutor,
+          nome: pet.nome,
+          especie: pet.especie,
+          raca: pet.raca,
+          idade: pet.idade,
+          restricoes: pet.restricoes,
+        };
+        this.petService.create(createPet).subscribe();
+      } else {
+        this.petService.patch(pet).subscribe();
+      }
+      this.dialogRef.close(true);
     } else {
       this.petForm.markAllAsTouched();
     }

@@ -1,6 +1,6 @@
 <div class="container p-4">
     <div class="card-body">
-        <h4 class="text-center mb-4">Cadastro de Serviço</h4>
+        <h4 class="text-center mb-4">{{titulo}}</h4>
 
         <form [formGroup]="servicoForm" (ngSubmit)="onSubmit()">
 
@@ -38,7 +38,7 @@
             </div>
 
             <button type="submit" class="btn btn-success w-100 mt-3" [disabled]="servicoForm.invalid">
-                Cadastrar
+                {{titulo}}
             </button>
         </form>
     </div>
